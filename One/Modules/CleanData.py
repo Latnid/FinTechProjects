@@ -7,7 +7,7 @@ pd.options.mode.chained_assignment = None  # default='warn'
 
 # Create the function for clean data acquire.
 def get_data(date):
-"""String type , date format is MM-DD-YYYY , for example '09-13-2022' """
+        """String type , date format is MM-DD-YYYY , for example '09-13-2022' """
         increase = pd.read_csv(Path(f'./Data/Increase/stocks-increase-change-in-open-interest-{date}.csv'))
         decrease = pd.read_csv(Path(f'./Data/Decrease/stocks-decrease-change-in-open-interest-{date}.csv'))
         combine_df = increase.merge(decrease, how= 'outer')
