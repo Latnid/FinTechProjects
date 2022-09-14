@@ -12,10 +12,10 @@ SQL -
 ### Connor
 Analyze stock price movement and option data over the same time period to infer relationships (Intraday, and for the week).
 
-### Kendren and/or Aditya
+### Kendren and/or Aditya | Connor
 Visualization of daily metrics and volatility smiles.
 
-### Kendren and/or Aditya
+### Kendren and/or Aditya | Connor
 CLI to interact with the data.
 - Entry and exit points on specific tickers.
 - Potential smart money trades
