@@ -7,13 +7,13 @@ load_dotenv()
 import numpy as np
 import alpaca_trade_api as alpaca
 
-def alpaca_func(API_KEY,API_SECRET):
+def alpaca_func(API_KEY,API_SECRET,START,END):
     alpaca_key = os.getenv(API_KEY)
     alpaca_secret = os.getenv(API_SECRET)
 
     api_alpaca = alpaca.REST(key_id=alpaca_key, secret_key=alpaca_secret, api_version="v2")
 
-    df = api_alpaca.get_bars(symbol=["FB","MSFT", "AAPL"], timeframe="1D", start="2019-01-01", end="2022-05-30").df
+    df = api_alpaca.get_bars(symbol=["FB","MSFT", "AAPL"], timeframe="1D", start=START, end=END).df
 
     fb_df = df[df["symbol"]=="FB"].drop(columns="symbol",axis = 1)
 
