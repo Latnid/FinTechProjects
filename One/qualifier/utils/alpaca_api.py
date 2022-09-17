@@ -5,12 +5,17 @@ from dotenv import load_dotenv
 load_dotenv()
 import numpy as np
 import alpaca_trade_api as alpaca
+import questionary
 
 def alpaca_func(API_KEY,API_SECRET,START_DATE,END_DATE):
     # Gets key and secret.
     alpaca_key = os.getenv(API_KEY)
     alpaca_secret = os.getenv(API_SECRET)
     api_alpaca = alpaca.REST(key_id=alpaca_key, secret_key=alpaca_secret, api_version="v2")
+
+    # Specifies the start and end date within function.
+    # START_DATE = questionary.text("What's your start date?").ask()
+    # END_DATE = questionary.text("What's your end date?").ask()
 
     # Specifies tickers to get from Alpaca API.
     # df = api_alpaca.get_bars(symbol=["FB","MSFT", "AAPL"], timeframe="1D", start="2022-01-01", end="2022-05-30").df
@@ -28,6 +33,7 @@ def alpaca_func(API_KEY,API_SECRET,START_DATE,END_DATE):
     plot_MSFT = fb_msft_aapl["MSFT"]["close"].plot()
 
     # Prints a message.
-    message = print(f"Successfully connected to API...")
+    if type(alpaca_secret) == "str" and type(alpaca_key) == "str":
+        message = print(f"Successfully connected to API...")
 
     return message
