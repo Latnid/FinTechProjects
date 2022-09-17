@@ -11,14 +11,14 @@ import questionary
 # START_DATE = questionary.text("What's your start date?").ask()
 # END_DATE = questionary.text("What's your end date?").ask()
 
-def alpaca_func(alpaca_key, alpaca_secret):
+def alpaca_func(alpaca_key, alpaca_secret,start_date,end_date):
 
     # Creates connection.
     api_alpaca = alpaca.REST(key_id=alpaca_key, secret_key=alpaca_secret, api_version="v2")
 
     # Specifies tickers to get from Alpaca API.
     # df = api_alpaca.get_bars(symbol=["FB","MSFT", "AAPL"], timeframe="1D", start="2022-01-01", end="2022-05-30").df
-    df = api_alpaca.get_bars(symbol=["FB","MSFT", "AAPL"], timeframe="1D", start="2019-01-01", end="2022-05-30").df
+    df = api_alpaca.get_bars(symbol=["FB","MSFT", "AAPL"], timeframe="1D", start=start_date, end=end_date).df
 
     # Specifies which companies to get data for.
     fb_df = df[df["symbol"]=="FB"].drop(columns="symbol",axis = 1)
