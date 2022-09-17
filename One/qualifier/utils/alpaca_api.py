@@ -8,8 +8,8 @@ import alpaca_trade_api as alpaca
 import questionary
 
 # Specifies the start and end date within function.
-# START_DATE = questionary.text("What's your start date?").ask()
-# END_DATE = questionary.text("What's your end date?").ask()
+# start_date = questionary.text("What's your start date?").ask()
+# end_date = questionary.text("What's your end date?").ask()
 
 def alpaca_func(alpaca_key, alpaca_secret,start_date,end_date):
 

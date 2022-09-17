@@ -17,4 +17,7 @@ from qualifier.utils.alpaca_api import alpaca_func
 alpaca_key = os.getenv("ALPACA_API_KEY")
 alpaca_secret = os.getenv("ALPACA_SECRET_KEY")
 
-alpaca_func(alpaca_key, alpaca_secret)
+start_date = "2022-01-01"
+end_date = "2022-05-30"
+
+alpaca_func(alpaca_key, alpaca_secret, start_date, end_date)
