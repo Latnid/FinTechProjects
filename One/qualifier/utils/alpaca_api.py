@@ -11,10 +11,8 @@ import questionary
 # START_DATE = questionary.text("What's your start date?").ask()
 # END_DATE = questionary.text("What's your end date?").ask()
 
-START_DATE = "2022-01-01"
-END_DATE = "2022-05-30"
+def alpaca_func(START_DATE,END_DATE):
 
-def alpaca_func(START_DATE=START_DATE,END_DATE=END_DATE):
     # Gets key and secret.
     alpaca_key = os.getenv("ALPACA_API_KEY")
     alpaca_secret = os.getenv("ALPACA_API_SECRET")
