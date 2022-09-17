@@ -1,5 +1,6 @@
 - Project Overview
-  
+This project will analyze daily option metrics in order to find “smart money” trades. A sample of option contracts with increasing and decreasing open interest, soon to expire, will be analyzed in an attempt to predict potential price movements in the underlying price. Metrics analyzed will be: open interest, implied volatility, volume, open interest change, and price changes. We will also analyze volatility smiles to assess trades on a daily basis.
+
 ---
 
 - Usage and installation instructions of libraries/tools that are used
@@ -39,6 +40,10 @@
 ---
 
 - References
+
+https://www.barchart.com/options/open-interest-change/increase
+https://www.barchart.com/options/open-interest-change/decrease
+https://hvplot.holoviz.org/user_guide/index.html
 
 ---
 
