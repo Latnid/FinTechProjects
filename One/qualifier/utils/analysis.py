@@ -3,8 +3,6 @@ import numpy as np
 import questionary
 import hvplot.pandas
 
-from Modules.CleanData import get_data
-
 def largest_25_OI(df):
     # Gets data via DataFrame.
     df = df
@@ -73,6 +71,44 @@ def options_call_bar(df):
         color='#259646',
         legend=False,
         label='Call',
+        stacked= True,
+        yformatter="%.0f"
+    )
+
+    return plot
+
+def options_put_bar(df):
+    # Gets data via DataFrame. 
+    df = df
+
+
+    puts = df[df['Type'] == 'Put'].drop(columns='Price')
+
+
+    puts['CnP'] = puts.groupby('Symbol')['Open Int'].transform('sum')
+
+
+    tmp = puts.sort_values(by= 'CnP', ascending=False)
+
+
+    tmp_top20 = tmp.groupby('Symbol').agg({'Open Int':'sum'}).sort_values(by= 'Open Int', ascending= False).iloc[:20]
+
+
+    top20_puts = tmp[tmp.Symbol.isin(tmp_top20.index)]\
+    .sort_values(['Symbol','Type','Strike','Open Int'])[['Symbol','Type','Strike','Open Int']]\
+    .set_index(['Symbol','Type','Strike'])
+
+    #hvplot the call list
+    plot = top20_puts.hvplot.bar(
+        x= 'Symbol',
+        y='Open Int',
+        by='Strike',
+        width=1000,
+        height=800,
+        rot=90,
+        color='#259646',
+        legend=False,
+        label='Puts',
         stacked= True,
         yformatter="%.0f"
     )
