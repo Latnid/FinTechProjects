@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from mibian import BS
 
 #Fetching data
-data = pd.read_csv("")
+data = pd.read_csv("09-14-2022.csv")
 data['IV'] = 0
 print data.head()
 
