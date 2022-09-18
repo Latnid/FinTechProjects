@@ -38,7 +38,6 @@ def largest_25_OI(df):
 
     return plot
 
-
 def options_call_bar(df):
     # Gets data via DataFrame. 
     df = df
@@ -114,3 +113,7 @@ def options_put_bar(df):
     )
 
     return plot
+
+
+
+
