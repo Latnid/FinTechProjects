@@ -24,7 +24,7 @@ Our end goal is to interact with the application via command line to visualize a
 
 ## Data pre-processing/gathering steps (cleaning and manipulation)
 
-The daily barchart.com options data was cleaned by first joining the increasing and decreasing option CSVs. The shortest expiration option chains are selected from the joined set. NAs were then dropped from the DataFrame.
+The daily barchart.com options data was cleaned by first joining the increasing and decreasing option CSVs. The shortest expiration option chains are selected from the joined set. NAs were then dropped from the DataFrame and then values were sorted.
 
 ## Visuals and explanations
 
