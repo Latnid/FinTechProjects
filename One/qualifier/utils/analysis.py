@@ -1,4 +1,3 @@
-from pstats import Stats
 import pandas as pd
 import numpy as np
 import questionary
