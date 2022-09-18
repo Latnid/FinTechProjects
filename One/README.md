@@ -26,6 +26,8 @@ End goal: to interact with the application via command line to visualize and ide
 
 - Visuals and explanations
 
+We will use the Smile volatility curve function to visual the data(there will be more)
+
 ---
 
 - Additional explanations
