@@ -5,8 +5,6 @@ import hvplot.pandas
 
 from Modules.CleanData import get_data
 
-# alpaca_func(key=alpaca_key, secret=alpaca_secret, START_DATE=START_DATE, END_DATE=END_DATE)
-# add_new_table(data=a)
 def largest_25_OI(df):
     # Gets data via DataFrame.
     df = df
@@ -42,3 +40,41 @@ def largest_25_OI(df):
 
     return plot
 
+
+def options_call_bar(df):
+    # Gets data via DataFrame. 
+    df = df
+
+
+    calls = df[df['Type'] == 'Call'].drop(columns='Price')
+
+
+    calls['CnP'] = calls.groupby('Symbol')['Open Int'].transform('sum')
+
+
+    tmp = calls.sort_values(by= 'CnP', ascending=False)
+
+
+    tmp_top20 = tmp.groupby('Symbol').agg({'Open Int':'sum'}).sort_values(by= 'Open Int', ascending= False).iloc[:20]
+
+
+    top20_calls = tmp[tmp.Symbol.isin(tmp_top20.index)]\
+    .sort_values(['Symbol','Type','Strike','Open Int'])[['Symbol','Type','Strike','Open Int']]\
+    .set_index(['Symbol','Type','Strike'])
+
+    #hvplot the call list
+    plot = top20_calls.hvplot.bar(
+        x= 'Symbol',
+        y='Open Int',
+        by='Strike',
+        width=1000,
+        height=800,
+        rot=90,
+        color='#259646',
+        legend=False,
+        label='Call',
+        stacked= True,
+        yformatter="%.0f"
+    )
+
+    return plot
