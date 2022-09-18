@@ -1,3 +1,4 @@
+from pstats import Stats
 import pandas as pd
 import numpy as np
 import questionary
@@ -114,6 +115,54 @@ def options_put_bar(df):
 
     return plot
 
+def call_stats(df):
+    # Gets data via DataFrame. 
+    df = df
 
+
+    calls = df[df['Type'] == 'Put'].drop(columns='Price')
+
+
+    calls['CnP'] = calls.groupby('Symbol')['Open Int'].transform('sum')
+
+
+    tmp = calls.sort_values(by= 'CnP', ascending=False)
+
+
+    tmp_top20 = tmp.groupby('Symbol').agg({'Open Int':'sum'}).sort_values(by= 'Open Int', ascending= False).iloc[:20]
+
+
+    top20_calls = tmp[tmp.Symbol.isin(tmp_top20.index)]\
+    .sort_values(['Symbol','Type','Strike','Open Int'])[['Symbol','Type','Strike','Open Int']]\
+    .set_index(['Symbol','Type','Strike'])
+
+    stats = top20_calls.describe()
+
+    return stats
+
+def put_stats(df):
+    # Gets data via DataFrame. 
+    df = df
+
+
+    puts = df[df['Type'] == 'Put'].drop(columns='Price')
+
+
+    puts['CnP'] = puts.groupby('Symbol')['Open Int'].transform('sum')
+
+
+    tmp = puts.sort_values(by= 'CnP', ascending=False)
+
+
+    tmp_top20 = tmp.groupby('Symbol').agg({'Open Int':'sum'}).sort_values(by= 'Open Int', ascending= False).iloc[:20]
+
+
+    top20_puts = tmp[tmp.Symbol.isin(tmp_top20.index)]\
+    .sort_values(['Symbol','Type','Strike','Open Int'])[['Symbol','Type','Strike','Open Int']]\
+    .set_index(['Symbol','Type','Strike'])
+
+    stats = top20_puts.describe()
+
+    return stats
 
 
