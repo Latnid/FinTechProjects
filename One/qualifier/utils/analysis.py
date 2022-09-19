@@ -1,3 +1,4 @@
+from cProfile import label
 import pandas as pd
 import numpy as np
 import questionary
@@ -164,4 +165,26 @@ def put_stats(df):
 
     return stats
 
+def ticker_report(ticker,df):
+    # 
+    ticker_df = df[df['Symbol'] == ticker]
+    
+    # Sets index as symbol.    
+    ticker_df = ticker_df.set_index('Symbol')
 
+    # Creates plot for ticker calls and puts.
+    plot = ticker_df.hvplot.bar(
+        x='Strike',
+        y='Open Int',
+        by='Type',
+        stacked= False,
+        height=500,
+        width=1300,
+        yformatter='%0f',
+        rot=90,
+        xlabel=ticker,
+        ylabel='Open Interests',
+        title = 'Call / Put Open Interests Comparison'
+    )
+
+    return plot
