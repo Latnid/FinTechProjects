@@ -32,7 +32,7 @@ def get_data(date):
         combine_sort_df = combine_min_DTE.sort_values(['Symbol','Type','Strike','Open Int','Volume','OI Chg','IV'])
         
         #Transfer column 'OI Chg'datatype from str to float.
-        combine_sort_df['OI Chg'] = combine_sort_df['OI Chg'].str.replace(',', '').astype(float)
+        combine_sort_df['OI Chg'] = combine_sort_df['OI Chg'].str.replace(',', '').str.replace('unch', '0').astype(float)
         
         #Transfer column 'IV'datatype from str to float.
         combine_sort_df['IV'] = combine_sort_df['IV'].str.replace('%', '').str.replace(',', '').astype(float)/100
