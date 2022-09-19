@@ -5,7 +5,7 @@ This project will analyze daily option metrics in order to find “smart money�
 
 ## Usage and installation instructions of libraries/tools that are used
 
-We will use barchart.com daily options data, downloaded via csv daily and stored in the 'Data' folder, coupled with Alpaca’s open, high, low, and close prices, pulled via API. This data will be updated into a SQLite database for easier analysis and organization.
+We will use barchart.com daily options data, downloaded via csv daily and stored in the 'Data' folder, coupled with Alpaca’s open, high, low, and close prices, pulled via API. This data will be updated into a SQLite database for easier analysis and organization. *Place .env with Alpaca API into the 'One' folder.*
 
 ```
 pip install pandas

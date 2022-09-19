@@ -105,7 +105,7 @@ def options_put_bar(df):
         width=1000,
         height=800,
         rot=90,
-        color='#259646',
+        color='#C01234',
         legend=False,
         label='Puts',
         stacked= True,
