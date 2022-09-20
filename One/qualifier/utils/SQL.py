@@ -1,6 +1,6 @@
 from Modules.CleanData import get_data
 
-
+# This function adds a new table to the options database. It uses the the time column from the csv to set the name of the newly added table.
 def add_new_table(data):
     # Importing the required libraries and dependencies
     import numpy as np
@@ -17,6 +17,10 @@ def add_new_table(data):
         database_connection_string,
         echo=True
     )
+    
+
+    # This is where the csv is added to the options database, with the name table_date variable. 
+
 
     data.to_sql(table_date,con = engine, index=False, if_exists='replace')
     # CREATE TABLE table_date (
