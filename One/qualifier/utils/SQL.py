@@ -19,7 +19,7 @@ def add_new_table(data):
     )
     
 
-    # This is where the csv is added to the options database, with the name table_date variable. 
+    # This is where the csv is added to the options database, with the name of the table = to table_date variable. 
 
 
     data.to_sql(table_date,con = engine, index=False, if_exists='replace')
