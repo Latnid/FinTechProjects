@@ -25,7 +25,7 @@ def Smile_Plot(date):
     optionData = data[data['Date'] == date]
     plt.plot(optionData['Strike'],optionData['IV'])
     plt.legend(optionData['Date'])
-    plt.ylabel('Implied Volatility')
+    plt.ylabel('Implied Vol')
     plt.xlabel('Strike Price')
     plt.show()
 
