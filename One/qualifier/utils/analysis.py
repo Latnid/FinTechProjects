@@ -1,4 +1,3 @@
-from cProfile import label
 import pandas as pd
 import numpy as np
 import questionary
@@ -6,35 +5,46 @@ import hvplot.pandas
 
 def largest_25_OI(df):
     # Gets data via DataFrame.
-    df = df
+    option_change_required = df
 
-    # Creates calls and puts variables.
-    calls = df[df['Type'] == 'Call']
-    puts = df[df['Type'] == 'Put']
+    # Sorting step one
+    #Groupby Symbol, then caluate the total Open Int, and make it as a new column
+    option_change_required['Total Open Int'] = option_change_required\
+    .groupby('Symbol')['Open Int'].transform('sum')
 
-    # Creates open interest and open interest sorted by type variables.
-    open_int_df = pd.DataFrame(df.groupby(['Symbol','Type'])['Open Int'].sum())
-    symbol_df = pd.DataFrame(df.groupby(['Symbol'])['Open Int'].sum())
+    # Sorting step two
+    #Acquire the list of the top 20 Symbols
 
-    # Merge the open interest with open interest type.
-    merged_df = open_int_df.merge(symbol_df, left_index=True, right_index=True, how='left')
-    merged_df.columns = ['Total Open Int','Open Int']
+    top_20 = option_change_required.groupby('Symbol').agg({'Open Int':'sum'})\
+    .sort_values('Open Int',ascending=False).iloc[:20]
 
-    # Creates the largest 25 open interest variable.
-    largest_25_OI_df = merged_df.nlargest(50,'Total Open Int')
+    # Sorting step three
+    #Use groupby and transform to add a column called Total Open Int base on option_change_required
+    option_change_required['Total Open Int'] = option_change_required\
+    .groupby('Symbol')['Open Int'].transform('sum')
+
+    #Use .isin to filter the rows from top_20.index
+    option_change_required_top_20 = option_change_required[option_change_required\
+    .Symbol.isin(top_20.index)]\
+    .sort_values(by = ['Total Open Int','Symbol','Type','Strike','Open Int',], ascending=False)\
+    .set_index(['Symbol','Type','Strike'])
+
+    # Drop Total Open Int 
+    option_change_required_top_20.drop(columns='Total Open Int',inplace=True)
 
     # Charts the largest 25 open interest option chains.
-    plot = largest_25_OI_df.hvplot.bar(
+    #hvplot to show the chart base on Open Int
+    plot = option_change_required_top_20.hvplot.bar(
         y='Open Int',
         by='Type',
-        stacked= False,
+        stacked=False,
         height=500,
-        width=1300,
+        width=1300, 
         yformatter='%0f',
-        rot=90,
+        rot=45,
         xlabel='Tickers by Call and Put',
         ylabel='Open Interests',
-        title = 'Tickers Call / Put Open Interests Comparison'
+        title = 'Tickers Call / Put Open Interests comparison'
     )
 
     return plot
