@@ -26,6 +26,8 @@ End goal: to interact with the application via command line to visualize and ide
 
 - Visuals and explanations
 
+Using the Black-Scholes formula, a function was created(Volatility Smile function) to graphically depict the data given as a Volatility Smile. This graph can help investors make decisions on a portfolio and/or other securities.
+
 ---
 
 - Additional explanations
