@@ -28,12 +28,12 @@ def alpaca_func(alpaca_key, alpaca_secret,start_date,end_date):
     aapl_df = df[df["symbol"]=="AAPL"].drop(columns="symbol",axis = 1)
     
     # Concat data together.
-    fb_msft_aapl = pd.concat([fb_df, msft_df, aapl_df], axis = 1, keys = ["FB","MSFT", "AAPL"])
+    meta_msft_aapl_df = pd.concat([meta_df, msft_df, aapl_df], axis = 1, keys = ["META","MSFT", "AAPL"])
 
     # Plots the data frame.
-    # plot_AAPL = aapl_df["AAPL"]["close"].plot()
+    plot = meta_msft_aapl_df["AAPL"]["close"].plot()
 
     # Prints a message.
-    message = print(f"Successfully gathered data from API.")
+    # print(f"Successfully gathered data from API.")
 
-    return message
+    return plot
