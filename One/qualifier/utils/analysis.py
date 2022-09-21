@@ -1,9 +1,8 @@
+from cProfile import label
 import pandas as pd
 import numpy as np
 import questionary
 import hvplot.pandas
-
-from Modules.CleanData import get_data
 
 def largest_25_OI(df):
     # Gets data via DataFrame.
@@ -40,7 +39,6 @@ def largest_25_OI(df):
 
     return plot
 
-
 def options_call_bar(df):
     # Gets data via DataFrame. 
     df = df
@@ -75,6 +73,118 @@ def options_call_bar(df):
         label='Call',
         stacked= True,
         yformatter="%.0f"
+    )
+
+    return plot
+
+def options_put_bar(df):
+    # Gets data via DataFrame. 
+    df = df
+
+
+    puts = df[df['Type'] == 'Put'].drop(columns='Price')
+
+
+    puts['CnP'] = puts.groupby('Symbol')['Open Int'].transform('sum')
+
+
+    tmp = puts.sort_values(by= 'CnP', ascending=False)
+
+
+    tmp_top20 = tmp.groupby('Symbol').agg({'Open Int':'sum'}).sort_values(by= 'Open Int', ascending= False).iloc[:20]
+
+
+    top20_puts = tmp[tmp.Symbol.isin(tmp_top20.index)]\
+    .sort_values(['Symbol','Type','Strike','Open Int'])[['Symbol','Type','Strike','Open Int']]\
+    .set_index(['Symbol','Type','Strike'])
+
+    #hvplot the call list
+    plot = top20_puts.hvplot.bar(
+        x= 'Symbol',
+        y='Open Int',
+        by='Strike',
+        width=1000,
+        height=800,
+        rot=90,
+        color='#C01234',
+        legend=False,
+        label='Puts',
+        stacked= True,
+        yformatter="%.0f"
+    )
+
+    return plot
+
+def call_stats(df):
+    # Gets data via DataFrame. 
+    df = df
+
+
+    calls = df[df['Type'] == 'Put'].drop(columns='Price')
+
+
+    calls['CnP'] = calls.groupby('Symbol')['Open Int'].transform('sum')
+
+
+    tmp = calls.sort_values(by= 'CnP', ascending=False)
+
+
+    tmp_top20 = tmp.groupby('Symbol').agg({'Open Int':'sum'}).sort_values(by= 'Open Int', ascending= False).iloc[:20]
+
+
+    top20_calls = tmp[tmp.Symbol.isin(tmp_top20.index)]\
+    .sort_values(['Symbol','Type','Strike','Open Int'])[['Symbol','Type','Strike','Open Int']]\
+    .set_index(['Symbol','Type','Strike'])
+
+    stats = top20_calls.describe()
+
+    return stats
+
+def put_stats(df):
+    # Gets data via DataFrame. 
+    df = df
+
+
+    puts = df[df['Type'] == 'Put'].drop(columns='Price')
+
+
+    puts['CnP'] = puts.groupby('Symbol')['Open Int'].transform('sum')
+
+
+    tmp = puts.sort_values(by= 'CnP', ascending=False)
+
+
+    tmp_top20 = tmp.groupby('Symbol').agg({'Open Int':'sum'}).sort_values(by= 'Open Int', ascending= False).iloc[:20]
+
+
+    top20_puts = tmp[tmp.Symbol.isin(tmp_top20.index)]\
+    .sort_values(['Symbol','Type','Strike','Open Int'])[['Symbol','Type','Strike','Open Int']]\
+    .set_index(['Symbol','Type','Strike'])
+
+    stats = top20_puts.describe()
+
+    return stats
+
+def ticker_report(ticker,df):
+    # 
+    ticker_df = df[df['Symbol'] == ticker]
+    
+    # Sets index as symbol.    
+    ticker_df = ticker_df.set_index('Symbol')
+
+    # Creates plot for ticker calls and puts.
+    plot = ticker_df.hvplot.bar(
+        x='Strike',
+        y='Open Int',
+        by='Type',
+        stacked= False,
+        height=500,
+        width=1300,
+        yformatter='%0f',
+        rot=90,
+        xlabel=ticker,
+        ylabel='Open Interests',
+        title = 'Call / Put Open Interests Comparison'
     )
 
     return plot
