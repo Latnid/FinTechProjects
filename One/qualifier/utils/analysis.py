@@ -3,7 +3,7 @@ import numpy as np
 import questionary
 import hvplot.pandas
 
-def largest_25_OI(df):
+def largest_20_OI(df):
     # Gets data via DataFrame.
     option_change_required = df
 
@@ -14,7 +14,36 @@ def largest_25_OI(df):
 
     # Sorting step two
     #Acquire the list of the top 20 Symbols
+    top_20 = option_change_required.groupby('Symbol').agg({'Open Int':'sum'})\
+    .sort_values('Open Int',ascending=False).iloc[:20]
 
+    # Sorting step three
+    #Use groupby and transform to add a column called Total Open Int base on option_change_required
+    option_change_required['Total Open Int'] = option_change_required\
+    .groupby('Symbol')['Open Int'].transform('sum')
+
+    #Use .isin to filter the rows from top_20.index
+    option_change_required_top_20 = option_change_required[option_change_required\
+    .Symbol.isin(top_20.index)]\
+    .sort_values(by = ['Total Open Int','Symbol','Type','Strike','Open Int',], ascending=False)\
+    .set_index(['Symbol','Type','Strike'])
+
+    # Drop Total Open Int 
+    option_change_required_top_20.drop(columns='Total Open Int',inplace=True)
+
+    return option_change_required_top_20
+
+def largest_20_OI_plot(df):
+    # Gets data via DataFrame.
+    option_change_required = df
+
+    # Sorting step one
+    #Groupby Symbol, then caluate the total Open Int, and make it as a new column
+    option_change_required['Total Open Int'] = option_change_required\
+    .groupby('Symbol')['Open Int'].transform('sum')
+
+    # Sorting step two
+    #Acquire the list of the top 20 Symbols
     top_20 = option_change_required.groupby('Symbol').agg({'Open Int':'sum'})\
     .sort_values('Open Int',ascending=False).iloc[:20]
 
