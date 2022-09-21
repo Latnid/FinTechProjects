@@ -78,6 +78,24 @@ def largest_20_OI_plot(df):
 
     return plot
 
+def option_change_top_20(df):
+
+    # Creates plot for OI Change from df.
+    plot = largest_20_OIdf.hvplot.bar(
+    y='OI Chg',
+    by='Type',
+    stacked=False,
+    height=500,
+    width=1300, 
+    yformatter='%0f',
+    rot=45,
+    xlabel='Tickers by Call and Put',
+    ylabel = 'Open Interest Change',
+    title = 'Tickers Call / Put Open Interests comparison'
+)
+
+    return plot
+
 def options_call_bar(df):
     # Gets data via DataFrame. 
     df = df
@@ -154,35 +172,35 @@ def options_put_bar(df):
 
     return plot
 
-def call_stats(df):
+def call_stats(ticker,df):
     # Gets data via DataFrame. 
-    df = df
+    df = df[df['Symbol'] == ticker]
 
-
+    # Gets calls from ticker df
     calls = df[df['Type'] == 'Put'].drop(columns='Price')
 
-
+    # Groups Calls by Open Int
     calls['CnP'] = calls.groupby('Symbol')['Open Int'].transform('sum')
 
-
+    # Sorts Values we grouped above
     tmp = calls.sort_values(by= 'CnP', ascending=False)
 
-
+    # Groups by Symbol, aggregates, then sorts values again.
     tmp_top20 = tmp.groupby('Symbol').agg({'Open Int':'sum'}).sort_values(by= 'Open Int', ascending= False).iloc[:20]
 
-
+    # Indexed and sorted new variable by .isin search.
     top20_calls = tmp[tmp.Symbol.isin(tmp_top20.index)]\
     .sort_values(['Symbol','Type','Strike','Open Int'])[['Symbol','Type','Strike','Open Int']]\
     .set_index(['Symbol','Type','Strike'])
 
+    # Describes the data
     stats = top20_calls.describe()
 
     return stats
 
-def put_stats(df):
+def put_stats(ticker,df):
     # Gets data via DataFrame. 
-    df = df
-
+    df = df[df['Symbol'] == ticker]
 
     puts = df[df['Type'] == 'Put'].drop(columns='Price')
 
@@ -200,12 +218,13 @@ def put_stats(df):
     .sort_values(['Symbol','Type','Strike','Open Int'])[['Symbol','Type','Strike','Open Int']]\
     .set_index(['Symbol','Type','Strike'])
 
+
     stats = top20_puts.describe()
 
     return stats
 
 def ticker_report(ticker,df):
-    # 
+    # Creates ticker df
     ticker_df = df[df['Symbol'] == ticker]
     
     # Sets index as symbol.    
