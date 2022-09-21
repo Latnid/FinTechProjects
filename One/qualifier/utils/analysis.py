@@ -92,7 +92,7 @@ def option_change_top_20(df):
     rot=45,
     xlabel='Tickers by Call and Put',
     ylabel = 'Open Interest Change',
-    title = 'Tickers Call / Put Open Interests comparison'
+    title = 'Tickers Call / Put Open Interests change comparison'
 )
 
     return plot
