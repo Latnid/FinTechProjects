@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import questionary
 import hvplot.pandas
+import plotly.express as px
 
 def largest_20_OI(df):
     # Gets data via DataFrame.
@@ -81,7 +82,7 @@ def largest_20_OI_plot(df):
 def option_change_top_20(df):
 
     # Creates plot for OI Change from df.
-    plot = largest_20_OIdf.hvplot.bar(
+    plot = df.hvplot.bar(
     y='OI Chg',
     by='Type',
     stacked=False,
@@ -244,5 +245,18 @@ def ticker_report(ticker,df):
         ylabel='Open Interests',
         title = 'Call / Put Open Interests Comparison'
     )
+
+    return plot
+
+def plotted_3d(df):
+    # Creates ticker df
+    #ticker_df = df[df['Symbol'] == ticker]
+    
+    # Sets index as symbol.    
+    #ticker_df = ticker_df.set_index('Symbol')
+
+    # Creates plot for ticker calls and puts.
+    plot = px.scatter_3d(df, x='Symbol', y='Strike', z='Open Int', size='Open Int', color='Symbol',
+                    hover_data=['Open Int'])
 
     return plot
