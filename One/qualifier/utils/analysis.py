@@ -101,19 +101,19 @@ def options_call_bar(df):
     # Gets data via DataFrame. 
     df = df
 
-
+    # Gets calls from ticker df
     calls = df[df['Type'] == 'Call'].drop(columns='Price')
 
-
+    # Groups Calls by Open Int
     calls['CnP'] = calls.groupby('Symbol')['Open Int'].transform('sum')
 
-
+    # Sorts Values we grouped above
     tmp = calls.sort_values(by= 'CnP', ascending=False)
 
-
+    # Groups by Symbol, aggregates, then sorts values again.
     tmp_top20 = tmp.groupby('Symbol').agg({'Open Int':'sum'}).sort_values(by= 'Open Int', ascending= False).iloc[:20]
 
-
+    # Uses isin to search inside above variable.
     top20_calls = tmp[tmp.Symbol.isin(tmp_top20.index)]\
     .sort_values(['Symbol','Type','Strike','Open Int'])[['Symbol','Type','Strike','Open Int']]\
     .set_index(['Symbol','Type','Strike'])
@@ -139,19 +139,19 @@ def options_put_bar(df):
     # Gets data via DataFrame. 
     df = df
 
-
+    # Gets puts from df
     puts = df[df['Type'] == 'Put'].drop(columns='Price')
 
-
+    # Groups puts
     puts['CnP'] = puts.groupby('Symbol')['Open Int'].transform('sum')
 
-
+    # Sorts puts
     tmp = puts.sort_values(by= 'CnP', ascending=False)
 
-
+    # Groups by Symbol, aggregates, then sorts values again. 
     tmp_top20 = tmp.groupby('Symbol').agg({'Open Int':'sum'}).sort_values(by= 'Open Int', ascending= False).iloc[:20]
 
-
+    # Uses isin to search inside above variable.
     top20_puts = tmp[tmp.Symbol.isin(tmp_top20.index)]\
     .sort_values(['Symbol','Type','Strike','Open Int'])[['Symbol','Type','Strike','Open Int']]\
     .set_index(['Symbol','Type','Strike'])
@@ -203,23 +203,24 @@ def put_stats(ticker,df):
     # Gets data via DataFrame. 
     df = df[df['Symbol'] == ticker]
 
+    # Gets puts from df
     puts = df[df['Type'] == 'Put'].drop(columns='Price')
 
-
+    # Groups puts
     puts['CnP'] = puts.groupby('Symbol')['Open Int'].transform('sum')
 
-
+    # Sorts puts
     tmp = puts.sort_values(by= 'CnP', ascending=False)
 
-
+    # Groups by Symbol, aggregates, then sorts values again. 
     tmp_top20 = tmp.groupby('Symbol').agg({'Open Int':'sum'}).sort_values(by= 'Open Int', ascending= False).iloc[:20]
 
-
+    # Indexed and sorted new variable by .isin search.
     top20_puts = tmp[tmp.Symbol.isin(tmp_top20.index)]\
     .sort_values(['Symbol','Type','Strike','Open Int'])[['Symbol','Type','Strike','Open Int']]\
     .set_index(['Symbol','Type','Strike'])
 
-
+    # Runs stats
     stats = top20_puts.describe()
 
     return stats
