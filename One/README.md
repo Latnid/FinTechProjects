@@ -1,6 +1,6 @@
 # Project Overview
   
-This project will analyze daily option metrics in order to find “smart money” trades. A sample of option contracts with increasing and decreasing open interest, soon to expire, will be analyzed in an attempt to show potential price movements in the underlying price. Metrics analyzed will be: open interest, implied volatility, volume, open interest change, and price changes. We will also analyze volatility smiles to assess trades on a short-term basis.
+This project will analyze daily option metrics to find “smart money” trades. A sample of option contracts with increasing and decreasing open interest, soon to expire, will be analyzed in an attempt to show potential price movements in the underlying price. Metrics analyzed will be: open interest, implied volatility, volume, open interest change, and price changes. We will also analyze volatility smiles to assess trades on a short-term basis.
 
 
 ## Usage and installation instructions of libraries/tools that are used
@@ -43,6 +43,7 @@ Using the Black-Scholes formula, a function was created(Volatility Smile functio
 
 ## Major findings
 
+The market moves extremely fast and opportunities go away just as fast. 
 
 
 ## Limitations and future development
