@@ -34,7 +34,7 @@ def get_data(date):
         #Transfer column 'IV'datatype from str to float.
         combine_min_DTE['IV'] = combine_min_DTE['IV'].str.replace('%', '').str.replace(',', '').astype(float)/100
         
-        #Sorted by orders 'Symbol','Type','Strike','Open Int','Volume','OI Chg','IV'
+        #Sorted by orders 'Symbol','Type','Strike','Open Int','Volume','OI Chg','IV'.
         combine_sort_df = combine_min_DTE.sort_values(['Symbol','Type','Strike','Open Int','Volume','OI Chg','IV'])
         
         # return data
