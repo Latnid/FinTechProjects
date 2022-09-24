@@ -13,6 +13,8 @@ pip install numpy
 pip install SQLAlchemy
 pip install python-dotenv
 pip install alpaca-trade-api
+pip install fire
+pip install questionary
 conda install -c pyviz hvplot
 conda install -c conda-forge voila
 ```
@@ -33,23 +35,24 @@ The daily barchart.com options data was cleaned by first joining the increasing 
 ## Visuals and explanations
 
 
+<br> This application also plots the top 20 largest open interest and open interest changes for the specified daily data. Call and put statistics and vairous plots are made for the top 20 largest as well. <br> Once you analyze the entire daily set, you are able to drill down into a specified ticker and date in the "reporting" side of the app.
 
 ## Additional explanations
 
+The date and ticker variables are manipulable to be able to analyze what you wish.
 
 
 ## Major findings
 
-The market moves extremely fast and opportunities go away just as fast. 
-
+On September 16th, the analyzer noticed a ton of in the money (ITM) put buying on Ford. On September 20th, Fords stock was on pace to have the worst trading day in over 11 years. <br> https://www.cnbc.com/2022/09/20/ford-stock-on-pace-for-worst-day-in-more-than-11-years.html
 
 ## Limitations and future development
 
-
+To efficiently update and use the CSVs, one may want to scrape or pay for barchart.com and/or Nasdaq options data.
 
 ## Conclusion
 
-
+The market moves extremely fast but would be very profitable if took a short position following the "smart money" trade. Not all potential trades were profitable, so you will have to be very picky. You will need some luck, intuition, and risk tolerance to use application profitably.
 
 ## References
 
