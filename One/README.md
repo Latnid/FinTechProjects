@@ -19,7 +19,12 @@ conda install -c pyviz hvplot
 conda install -c conda-forge voila
 ```
 
+Inside app.ipynb you are able to change the dates you would like to analyze. Also, inside this file, you are able to change the ticker to analyze for the reporting function.
 
+Once variables are set... Run with voila!
+```
+voila app.ipynb
+```
 
 ## Intro (business question and motivation)
 
