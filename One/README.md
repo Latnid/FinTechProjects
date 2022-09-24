@@ -1,5 +1,5 @@
 # Project Overview
-  ![Alt text](https://tenor.com/view/dragon-ball-super-broly-broly-super-saiyan-broly-legendary-super-saiyan-power-up-gif-25779826)
+  ![Image](https://tenor.com/view/dragon-ball-super-broly-broly-super-saiyan-broly-legendary-super-saiyan-power-up-gif-25779826)
 
 This project will analyze daily option metrics to find “smart money” trades. A sample of option contracts with increasing and decreasing open interest, soon to expire, will be analyzed in an attempt to show potential price movements in the underlying price. Metrics analyzed will be: open interest, implied volatility, volume, open interest change, and price changes. We will also analyze volatility smiles to assess trades on a short-term basis.
 
@@ -81,7 +81,7 @@ for stock analysis.
 ## Conclusion
  Yet, in conclusion the overall goal of Application is: reliable automatic processing of securities data, too provide visualization and tables just as well as prediction for that data in simple interface usable by anyone who can read.
  
- ![Alt text](https://tenor.com/view/izuku-midoriya-deku-shocked-quirkless-boku-no-hero-academia-gif-21856836)
+ ![Image](https://tenor.com/view/izuku-midoriya-deku-shocked-quirkless-boku-no-hero-academia-gif-21856836)
 
 
 
@@ -105,4 +105,4 @@ Kcornish
 Dintal -_-
 
 ---
-![Alt text](https://tenor.com/view/my-hero-academia-boku-no-hero-academia-mha-bnha-how-to-make-money-online-gif-17893257)
+![Image](https://tenor.com/view/my-hero-academia-boku-no-hero-academia-mha-bnha-how-to-make-money-online-gif-17893257)
