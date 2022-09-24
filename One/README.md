@@ -105,5 +105,5 @@ Kcornish
 Dintal -_-
 
 ---
-![Image](https://user-images.githubusercontent.com/95327040/192081531-51564a00-af6e-4ae3-aa98-295cbb54e01d.gif)
+![Alt text](https://user-images.githubusercontent.com/95327040/192081531-51564a00-af6e-4ae3-aa98-295cbb54e01d.gif)
 
