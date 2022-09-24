@@ -1,5 +1,6 @@
 # Project Overview
-  
+  ![image](https://user-images.githubusercontent.com/95327040/192080949-cffb5c16-7611-463f-b277-1fee3a411159.png)
+
 This project will analyze daily option metrics to find “smart money” trades. A sample of option contracts with increasing and decreasing open interest, soon to expire, will be analyzed in an attempt to show potential price movements in the underlying price. Metrics analyzed will be: open interest, implied volatility, volume, open interest change, and price changes. We will also analyze volatility smiles to assess trades on a short-term basis.
 
 
@@ -36,9 +37,30 @@ Using the Black-Scholes formula, a function was created(Volatility Smile functio
 
 ---
 
+## CLI
+Step 1. Produce proper data for the selected dates.
+       1A. Output production of data with latest trade volume,
+    price, sell etc. all data on events that occurred on the
+    specified day. We use CSV , and import path from pathlib and
+    import a get_data function.
+    2A. Process to visualization so we can obtain output in form
+of tables and graphs. For this we import pandas as Pd, from
+qualifier.utils.SQL import add_new_table, import matplotlib.pyplot as plt
+
+Step 2 the security is ideally suited to a command line interface. Since it is embarrassingly a data explosion of numbers and words in that csv file.
+    2A. The analyzer we are modeling has a little over  simple to interact
+    with CLI, a solution in 3 distinct parts, this is context within which the
+    software solution is looked for. This illustrated on a menu as options A,
+    B ,and C
+    2B. These three solutions use code that encapsulates the
+    finance/statistics knowledge, and the main menu interfaceable function
+    accepts analysis requests and exports too local environment.
 
 ## Additional explanations
-
+● In general finance research involves statistical analysis of individual financial instruments.
+● For this particular occasion: thorough statistical analysis of the combined decrease, and increase of stock securities between the dates September 12th - September 20th
+● Over 10 securities such as the top traded stocks between this date like AAPL, AMZN, GME, GOOGL, JPM, LYFT, NVDA
+● In practice there is one CSV file containing each day of data for those securities.
 
 
 ## Major findings
@@ -48,9 +70,17 @@ The market moves extremely fast and opportunities go away just as fast.
 
 ## Limitations and future development
 
+Given, the problem in developing constantly trading financial securities brings, and the software for such objective is a little more then just storage + computation and information systems. The stock prediction analyzer solves and will fit well at least part of the problems. In which we use an architecture of functions that in conception that would fit well to solve many classes of problems, usable beyond finance.
+Software architecture that does so is more likely to be usable: it can
+cooperate in more elaborate solutions. Our manin menu utilizes functions
+with iterative development processes in place for quick initial solutions
+for stock analysis.
+
 
 
 ## Conclusion
+ Yet, in conclusion the overall goal of Application is: reliable automatic processing of securities data, too provide visualization and tables just as well as prediction for that data in simple interface usable by anyone who can read.
+ ![image](https://user-images.githubusercontent.com/95327040/192080786-54d221e4-60d1-4f8d-9d5b-623429efd9ba.png)
 
 
 
@@ -74,3 +104,4 @@ Kcornish
 Dintal -_-
 
 ---
+![image](https://user-images.githubusercontent.com/95327040/192080997-960e2cd1-c113-40a2-9a91-d4cd54494433.png)
