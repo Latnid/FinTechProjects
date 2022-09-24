@@ -15,6 +15,8 @@ pip install numpy
 pip install SQLAlchemy
 pip install python-dotenv
 pip install alpaca-trade-api
+pip install fire
+pip install questionary
 conda install -c pyviz hvplot
 conda install -c conda-forge voila
 ```
@@ -35,6 +37,7 @@ The daily barchart.com options data was cleaned by first joining the increasing 
 ## Visuals and explanations
 
 Using the Black-Scholes formula, a function was created(Volatility Smile function) to graphically depict the data given as a Volatility Smile. This graph can help investors make decisions on a portfolio and/or other securities.
+<br> This application also plots the top 20 largest open interest and open interest changes for the specified daily data. Call and put statistics and vairous plots are made for the top 20 largest as well. <br> Once you analyze the entire daily set, you are able to drill down into a specified ticker and date in the "reporting" side of the app.
 
 ---
 
@@ -57,33 +60,25 @@ Step 2 the security is ideally suited to a command line interface. Since it is e
     finance/statistics knowledge, and the main menu interfaceable function
     accepts analysis requests and exports too local environment.
 
+
 ## Additional explanations
-● In general finance research involves statistical analysis of individual financial instruments.
-● For this particular occasion: thorough statistical analysis of the combined decrease, and increase of stock securities between the dates September 12th - September 20th
-● Over 10 securities such as the top traded stocks between this date like AAPL, AMZN, GME, GOOGL, JPM, LYFT, NVDA
-● In practice there is one CSV file containing each day of data for those securities.
+
+The date and ticker variables are manipulable to be able to analyze what you wish.
 
 
 ## Major findings
 
-The market moves extremely fast and opportunities go away just as fast. 
-
+On September 16th, the analyzer noticed a ton of in the money (ITM) put buying on Ford. On September 20th, Fords stock was on pace to have the worst trading day in over 11 years. <br> https://www.cnbc.com/2022/09/20/ford-stock-on-pace-for-worst-day-in-more-than-11-years.html
 
 ## Limitations and future development
 
-Given, the problem in developing constantly trading financial securities brings, and the software for such objective is a little more then just storage + computation and information systems. The stock prediction analyzer solves and will fit well at least part of the problems. In which we use an architecture of functions that in conception that would fit well to solve many classes of problems, usable beyond finance.
-Software architecture that does so is more likely to be usable: it can
-cooperate in more elaborate solutions. Our manin menu utilizes functions
-with iterative development processes in place for quick initial solutions
-for stock analysis.
-
-
+To efficiently update and use the CSVs, one may want to scrape or pay for barchart.com and/or Nasdaq options data.
 
 ## Conclusion
  Yet, in conclusion the overall goal of Application is: reliable automatic processing of securities data, too provide visualization and tables just as well as prediction for that data in simple interface usable by anyone who can read.
  
 
-
+The market moves extremely fast but would be very profitable if took a short position following the "smart money" trade. Not all potential trades were profitable, so you will have to be very picky. You will need some luck, intuition, and risk tolerance to use application profitably.
 
 ## References
 
