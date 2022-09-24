@@ -8,6 +8,7 @@ import sys
 from pathlib import Path
 import pandas as pd
 from Modules.CleanData import get_data
+import fire
 
 
 
@@ -149,3 +150,6 @@ def run():
         run()
     else:
         print("Thank you for using stock analyzer. Have a nice day!")
+
+if __name__ == "__main__":
+    fire.Fire(run)
