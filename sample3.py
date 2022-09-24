@@ -38,8 +38,6 @@ def validate_symbol(symbol_i):
     else:
         return False
 
-
-
 stock_a = (stocks.get("Price"))
 
 
