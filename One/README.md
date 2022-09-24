@@ -47,7 +47,7 @@ The daily barchart.com options data was cleaned by first joining the increasing 
 
 CLI can be found under Modules, open CLI.ipynb with jupyter notebook.
 
-![image]("./Data/CLI.gif")
+![image](./Data/CLI.gif)
 
 ## Additional explanations
 
