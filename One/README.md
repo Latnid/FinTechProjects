@@ -1,7 +1,6 @@
+
 # Project Overview
-  ![image](https://user-images.githubusercontent.com/95327040/192081656-5bd764cb-0a8c-48be-9455-5d77f3a99588.png)
-
-
+  
 This project will analyze daily option metrics to find “smart money” trades. A sample of option contracts with increasing and decreasing open interest, soon to expire, will be analyzed in an attempt to show potential price movements in the underlying price. Metrics analyzed will be: open interest, implied volatility, volume, open interest change, and price changes. We will also analyze volatility smiles to assess trades on a short-term basis.
 
 
@@ -43,31 +42,12 @@ The daily barchart.com options data was cleaned by first joining the increasing 
 
 ## Visuals and explanations
 
-Using the Black-Scholes formula, a function was created(Volatility Smile function) to graphically depict the data given as a Volatility Smile. This graph can help investors make decisions on a portfolio and/or other securities.
-<br> This application also plots the top 20 largest open interest and open interest changes for the specified daily data. Call and put statistics and vairous plots are made for the top 20 largest as well. <br> Once you analyze the entire daily set, you are able to drill down into a specified ticker and date in the "reporting" side of the app.
-
----
-
-## CLI
-Step 1. Produce proper data for the selected dates.
-       1A. Output production of data with latest trade volume,
-    price, sell etc. all data on events that occurred on the
-    specified day. We use CSV , and import path from pathlib and
-    import a get_data function.
-    2A. Process to visualization so we can obtain output in form
-of tables and graphs. For this we import pandas as Pd, from
-qualifier.utils.SQL import add_new_table, import matplotlib.pyplot as plt
-
-Step 2 the security is ideally suited to a command line interface. Since it is embarrassingly a data explosion of numbers and words in that csv file.
-    2A. The analyzer we are modeling has a little over  simple to interact
-    with CLI, a solution in 3 distinct parts, this is context within which the
-    software solution is looked for. This illustrated on a menu as options A,
-    B ,and C
-    2B. These three solutions use code that encapsulates the
-    finance/statistics knowledge, and the main menu interfaceable function
-    accepts analysis requests and exports too local environment.
 
 <br> This application also plots the top 20 largest open interest and open interest changes for the specified daily data. Call and put statistics and vairous plots are made for the top 20 largest as well. <br> Once you analyze the entire daily set, you are able to drill down into a specified ticker and date in the "reporting" side of the app.
+
+CLI can be found under Modules, open CLI.ipynb with jupyter notebook.
+
+![image]("./Data/CLI.gif")
 
 ## Additional explanations
 
@@ -83,8 +63,6 @@ On September 16th, the analyzer noticed a ton of in the money (ITM) put buying o
 To efficiently update and use the CSVs, one may want to scrape or pay for barchart.com and/or Nasdaq options data.
 
 ## Conclusion
- Yet, in conclusion the overall goal of Application is: reliable automatic processing of securities data, too provide visualization and tables just as well as prediction for that data in simple interface usable by anyone who can read.
- 
 
 The market moves extremely fast but would be very profitable if took a short position following the "smart money" trade. Not all potential trades were profitable, so you will have to be very picky. You will need some luck, intuition, and risk tolerance to use application profitably.
 
@@ -106,7 +84,3 @@ Connor Boots
 Kcornish
  
 Dintal -_-
-
----
-
-
